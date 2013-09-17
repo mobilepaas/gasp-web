@@ -18,5 +18,5 @@ object ApplicationBuild extends Build {
   import cloudbees.Plugin._
   val main = play.Project(appName, appVersion, appDependencies) 
     .settings(cloudBeesSettings :_*)
-    .settings(CloudBees.applicationId := Some("michaelnealeclickstart2/gasp-web"))
+    .settings(CloudBees.applicationId := Some("partnerdemo/gasp-web"))
 }
