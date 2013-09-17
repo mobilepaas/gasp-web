@@ -5,10 +5,8 @@
 # Home page
 GET     /                           controllers.Application.index
 
-# Create a new review
-POST    /review                     controllers.Application.createReview
-
+# Hello action
+GET     /hello                      controllers.Application.sayHello
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-

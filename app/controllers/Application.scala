@@ -5,31 +5,50 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
+import views._
+
+
+import play.api.Play.current
+ 
 
 object Application extends Controller {
-  
-  def index = Action {
-    Ok(views.html.index("Your new application is ready."))
-  }
 
-    val restaurantForm = Form(
-        tuple(
-          "name" -> nonEmptyText,
-          "website" -> nonEmptyText,
-          "address" -> nonEmptyText
-      )
+  /**
+   * Describes the hello form.
+   */
+  val helloForm = Form(
+    tuple(
+      "name" -> nonEmptyText,
+      "repeat" -> number(min = 1, max = 100),
+      "color" -> optional(text)
     )
+  )
 
+  val result = false
 
-  def createReview = Action { implicit request =>
-    val (name, website, address) = restaurantForm.bindFromRequest.get
-    println("CREATING " + name)
-    Redirect(routes.Application.index)
+  // -- Actions
+
+  /**
+   * Home page
+   */
+  def index = Action { implicit request =>
+    Ok(html.index(helloForm))  
   }
 
+  /**
+   * Handles the form submission.
+   */
+  def sayHello = Action { implicit request =>
+
+  helloForm.bindFromRequest.fold(
+      formWithErrors => BadRequest(html.index(formWithErrors)),
+      {case (name, repeat, color) => Ok(html.hello(name, repeat.toInt, color))}
+    )
+  }
+  
+ 
+ 
+  
+  
+  
 }
-
-
-
-
-
