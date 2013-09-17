@@ -1,12 +1,17 @@
-Gasp Web 
+Gasp Web UI
 ======
 
-This is a trivial play framework app that creates new data for the gasp demo app. 
+This is a trivial play framework app for data entry for the Gasp server. It is written in Play2 and Scala.
 
-gasp-web ----> pushes data into -----> gasp-server
+Read more about the <a href="http://mobilepaas.github.io">gasp-demo here</a>.
 
-This runs as an app on the CloudBees PaaS via: 
+gasp-web 
+      ----> gasp-server
 
-`play cloudbees-deploy`
+This is deployed to CloudBees PaaS via: 
 
-(check out the Build.scala config for the appId it will be deployed to)
+* Modify Build.scala for the appId you want to use
+* Set the gasp-server endpoint in Application.scala
+* Deploy via: `play cloudbees-deploy`
+
+
