@@ -1,11 +1,9 @@
-@(name: String, repeat: Int, color: Option[String])
+@(name: String)
 
-@main("Here is the result:") {
+@main("Thanks for your new entry:") {
 
-    <ul style="color: @color.getOrElse("inherited")">
-        @for(_ <- 1 to repeat) {
-            <li>Hello @name!</li>
-        }
+    <ul style="color:inherited">
+        @name
     </ul>
 
     <p class="buttons">

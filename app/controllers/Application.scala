@@ -19,8 +19,8 @@ object Application extends Controller {
   val helloForm = Form(
     tuple(
       "name" -> nonEmptyText,
-      "repeat" -> number(min = 1, max = 100),
-      "color" -> optional(text)
+      "website" -> nonEmptyText,
+      "address" -> nonEmptyText
     )
   )
 
@@ -38,11 +38,11 @@ object Application extends Controller {
   /**
    * Handles the form submission.
    */
-  def sayHello = Action { implicit request =>
+  def createRestaurant = Action { implicit request =>
 
   helloForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.index(formWithErrors)),
-      {case (name, repeat, color) => Ok(html.hello(name, repeat.toInt, color))}
+      {case (name, repeat, color) => Ok(html.hello(name))}
     )
   }
   
