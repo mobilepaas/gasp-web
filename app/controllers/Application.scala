@@ -42,9 +42,22 @@ object Application extends Controller {
 
   helloForm.bindFromRequest.fold(
       formWithErrors => BadRequest(html.index(formWithErrors)),
-      {case (name, repeat, color) => Ok(html.hello(name))}
+      {case (name, website, address) => 
+        storeEntry(name=name, website=website, address=address)
+        Ok(html.hello(name))}
     )
   }
+
+
+  def storeEntry(name: String, website: String, address: String) = {
+    import play.api.libs.json._
+    import play.api.libs.ws._
+    var payload = Json.toJson(Map("name" -> name, "website" -> website, "address" -> address))
+    WS.url("http://gasp.partnerdemo.cloudbees.net/restaurants")        
+        .post(payload)
+ }
+
+
   
  
  

@@ -2,26 +2,26 @@
 
 @import helper._
 
-@main(title = "Create a new restaurant entry for GASP") {
+@main(title = "GASP!") {
 
-    <h1>Configure your 'Hello world':</h1>
+    <h1>Create a new GASP restaurant entry:</h1>
 
     @form(action = routes.Application.createRestaurant, args = 'id -> "helloform") {
 
         @inputText(
             field = helloForm("name"),
-            args = '_label -> "Restaurant Name", 'placeholder -> "World"
+            args = '_label -> "Restaurant Name", 'placeholder -> "My Restaurant"
         )
 
         @inputText(
             field = helloForm("website"),
-            args = '_label -> "Website", 'placeholder -> "World"
+            args = '_label -> "Website", 'placeholder -> "www.example.com"
         )
 
 
         @inputText(
             field = helloForm("address"),
-            args = '_label -> "Address", 'placeholder -> "World"
+            args = '_label -> "Address", 'placeholder -> "2 World Ave."
         )
 
 
